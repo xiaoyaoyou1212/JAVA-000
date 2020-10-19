@@ -1,0 +1,267 @@
+javap -c Hello.class
+
+Compiled from "Hello.java"
+public class Hello {
+  public Hello();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: bipush        10
+       2: istore_1
+       3: iconst_5
+       4: istore_2
+       5: bipush        6
+       7: istore_3
+       8: iconst_0
+       9: istore        4
+      11: iload         4
+      13: iload_3
+      14: if_icmpge     133
+      17: iload         4
+      19: ifne          36
+      22: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      25: iload_1
+      26: iload_2
+      27: invokestatic  #3                  // Method add:(II)I
+      30: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+      33: goto          127
+      36: iload         4
+      38: iconst_1
+      39: if_icmpne     56
+      42: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      45: iload_1
+      46: iload_2
+      47: invokestatic  #5                  // Method subtract:(II)I
+      50: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+      53: goto          127
+      56: iload         4
+      58: iconst_2
+      59: if_icmpne     76
+      62: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      65: iload_1
+      66: iload_2
+      67: invokestatic  #6                  // Method multiply:(II)I
+      70: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+      73: goto          127
+      76: iload         4
+      78: iconst_3
+      79: if_icmpne     96
+      82: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      85: iload_1
+      86: iload_2
+      87: invokestatic  #7                  // Method divide:(II)I
+      90: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+      93: goto          127
+      96: iload         4
+      98: iconst_4
+      99: if_icmpne     116
+     102: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+     105: iload_1
+     106: iload_2
+     107: invokestatic  #8                  // Method remainder:(II)I
+     110: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+     113: goto          127
+     116: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+     119: iload         4
+     121: invokestatic  #9                  // Method negate:(I)I
+     124: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+     127: iinc          4, 1
+     130: goto          11
+     133: return
+}
+
+javap -c -verbose Hello.class
+
+Classfile /F:/GitWorkspace/Java-Learn/JAVA-000/out/production/JAVA-000/Hello.class
+  Last modified 2020-10-19; size 1326 bytes
+  MD5 checksum 4ee542b9d3a3fdaba6bef731d7e09a1c
+  Compiled from "Hello.java"
+public class Hello
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #11.#40        // java/lang/Object."<init>":()V
+   #2 = Fieldref           #41.#42        // java/lang/System.out:Ljava/io/PrintStream;
+   #3 = Methodref          #10.#43        // Hello.add:(II)I
+   #4 = Methodref          #44.#45        // java/io/PrintStream.println:(I)V
+   #5 = Methodref          #10.#46        // Hello.subtract:(II)I
+   #6 = Methodref          #10.#47        // Hello.multiply:(II)I
+   #7 = Methodref          #10.#48        // Hello.divide:(II)I
+   #8 = Methodref          #10.#49        // Hello.remainder:(II)I
+   #9 = Methodref          #10.#50        // Hello.negate:(I)I
+  #10 = Class              #51            // Hello
+  #11 = Class              #52            // java/lang/Object
+  #12 = Utf8               <init>
+  #13 = Utf8               ()V
+  #14 = Utf8               Code
+  #15 = Utf8               LineNumberTable
+  #16 = Utf8               LocalVariableTable
+  #17 = Utf8               this
+  #18 = Utf8               LHello;
+  #19 = Utf8               main
+  #20 = Utf8               ([Ljava/lang/String;)V
+  #21 = Utf8               i
+  #22 = Utf8               I
+  #23 = Utf8               args
+  #24 = Utf8               [Ljava/lang/String;
+  #25 = Utf8               a
+  #26 = Utf8               b
+  #27 = Utf8               count
+  #28 = Utf8               StackMapTable
+  #29 = Class              #24            // "[Ljava/lang/String;"
+  #30 = Utf8               add
+  #31 = Utf8               (II)I
+  #32 = Utf8               subtract
+  #33 = Utf8               multiply
+  #34 = Utf8               divide
+  #35 = Utf8               remainder
+  #36 = Utf8               negate
+  #37 = Utf8               (I)I
+  #38 = Utf8               SourceFile
+  #39 = Utf8               Hello.java
+  #40 = NameAndType        #12:#13        // "<init>":()V
+  #41 = Class              #53            // java/lang/System
+  #42 = NameAndType        #54:#55        // out:Ljava/io/PrintStream;
+  #43 = NameAndType        #30:#31        // add:(II)I
+  #44 = Class              #56            // java/io/PrintStream
+  #45 = NameAndType        #57:#58        // println:(I)V
+  #46 = NameAndType        #32:#31        // subtract:(II)I
+  #47 = NameAndType        #33:#31        // multiply:(II)I
+  #48 = NameAndType        #34:#31        // divide:(II)I
+  #49 = NameAndType        #35:#31        // remainder:(II)I
+  #50 = NameAndType        #36:#37        // negate:(I)I
+  #51 = Utf8               Hello
+  #52 = Utf8               java/lang/Object
+  #53 = Utf8               java/lang/System
+  #54 = Utf8               out
+  #55 = Utf8               Ljava/io/PrintStream;
+  #56 = Utf8               java/io/PrintStream
+  #57 = Utf8               println
+  #58 = Utf8               (I)V
+{
+  public Hello();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 9: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   LHello;
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=5, args_size=1
+         0: bipush        10
+         2: istore_1
+         3: iconst_5
+         4: istore_2
+         5: bipush        6
+         7: istore_3
+         8: iconst_0
+         9: istore        4
+        11: iload         4
+        13: iload_3
+        14: if_icmpge     133
+        17: iload         4
+        19: ifne          36
+        22: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        25: iload_1
+        26: iload_2
+        27: invokestatic  #3                  // Method add:(II)I
+        30: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+        33: goto          127
+        36: iload         4
+        38: iconst_1
+        39: if_icmpne     56
+        42: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        45: iload_1
+        46: iload_2
+        47: invokestatic  #5                  // Method subtract:(II)I
+        50: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+        53: goto          127
+        56: iload         4
+        58: iconst_2
+        59: if_icmpne     76
+        62: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        65: iload_1
+        66: iload_2
+        67: invokestatic  #6                  // Method multiply:(II)I
+        70: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+        73: goto          127
+        76: iload         4
+        78: iconst_3
+        79: if_icmpne     96
+        82: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        85: iload_1
+        86: iload_2
+        87: invokestatic  #7                  // Method divide:(II)I
+        90: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+        93: goto          127
+        96: iload         4
+        98: iconst_4
+        99: if_icmpne     116
+       102: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       105: iload_1
+       106: iload_2
+       107: invokestatic  #8                  // Method remainder:(II)I
+       110: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+       113: goto          127
+       116: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       119: iload         4
+       121: invokestatic  #9                  // Method negate:(I)I
+       124: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+       127: iinc          4, 1
+       130: goto          11
+       133: return
+      LineNumberTable:
+        line 11: 0
+        line 12: 3
+        line 13: 5
+        line 14: 8
+        line 15: 17
+        line 16: 22
+        line 17: 36
+        line 18: 42
+        line 19: 56
+        line 20: 62
+        line 21: 76
+        line 22: 82
+        line 23: 96
+        line 24: 102
+        line 26: 116
+        line 14: 127
+        line 29: 133
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           11     122     4     i   I
+            0     134     0  args   [Ljava/lang/String;
+            3     131     1     a   I
+            5     129     2     b   I
+            8     126     3 count   I
+      StackMapTable: number_of_entries = 8
+        frame_type = 255 /* full_frame */
+          offset_delta = 11
+          locals = [ class "[Ljava/lang/String;", int, int, int, int ]
+          stack = []
+        frame_type = 24 /* same */
+        frame_type = 19 /* same */
+        frame_type = 19 /* same */
+        frame_type = 19 /* same */
+        frame_type = 19 /* same */
+        frame_type = 10 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 5
+}
+SourceFile: "Hello.java"
