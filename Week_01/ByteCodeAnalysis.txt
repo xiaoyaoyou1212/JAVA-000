@@ -6,6 +6,7 @@ public class Hello
   minor version: 0
   major version: 52
   flags: ACC_PUBLIC, ACC_SUPER
+//常量池
 Constant pool:
    #1 = Methodref          #11.#40        // java/lang/Object."<init>":()V
    #2 = Fieldref           #41.#42        // java/lang/System.out:Ljava/io/PrintStream;
@@ -67,86 +68,160 @@ Constant pool:
   #58 = Utf8               (I)V
 {
   public Hello();
+    //构造方法
     descriptor: ()V
+    //公共方法
     flags: ACC_PUBLIC
     Code:
+      ////栈深度1，本地变量1个槽位，方法参数1个
       stack=1, locals=1, args_size=1
+         //将第一个引用类型本地变量推送至栈顶
          0: aload_0
+         //调用超类构造方法
          1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         //返回
          4: return
+      //方法行号信息
       LineNumberTable:
         line 9: 0
+      //局部变量表信息
       LocalVariableTable:
         Start  Length  Slot  Name   Signature
             0       5     0  this   LHello;
 
   public static void main(java.lang.String[]);
+    //拥有一个数组参数，无返回值
     descriptor: ([Ljava/lang/String;)V
+    //公共静态方法
     flags: ACC_PUBLIC, ACC_STATIC
     Code:
+      //栈深度3，本地变量5个槽位，方法参数1个
       stack=3, locals=5, args_size=1
+         //将单字节的常量值10推送至栈顶
          0: bipush        10
+         //将栈顶int型数值存入第二个本地变量
          2: istore_1
+         //将int型5推送至栈顶
          3: iconst_5
+         //将栈顶int型数值存入第三个本地变量
          4: istore_2
+         //将单字节的常量值6推送至栈顶
          5: bipush        6
+         //将栈顶int型数值存入第四个本地变量
          7: istore_3
+         //将int型0推送至栈顶
          8: iconst_0
+         //
          9: istore        4
+         //
         11: iload         4
+        //
         13: iload_3
+        //
         14: if_icmpge     133
+        //
         17: iload         4
+        //
         19: ifne          36
+        //
         22: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        //
         25: iload_1
+        //
         26: iload_2
+        //
         27: invokestatic  #3                  // Method add:(II)I
+        //
         30: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+        //
         33: goto          127
+        //
         36: iload         4
+        //
         38: iconst_1
+        //
         39: if_icmpne     56
+        //
         42: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        //
         45: iload_1
+        //
         46: iload_2
+        //
         47: invokestatic  #5                  // Method subtract:(II)I
+        //
         50: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+        //
         53: goto          127
+        //
         56: iload         4
+        //
         58: iconst_2
+        //
         59: if_icmpne     76
+        //
         62: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        //
         65: iload_1
+        //
         66: iload_2
+        //
         67: invokestatic  #6                  // Method multiply:(II)I
+        //
         70: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+        //
         73: goto          127
+        //
         76: iload         4
+        //
         78: iconst_3
+        //
         79: if_icmpne     96
+        //
         82: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        //
         85: iload_1
+        //
         86: iload_2
+        //
         87: invokestatic  #7                  // Method divide:(II)I
+        //
         90: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+        //
         93: goto          127
+        //
         96: iload         4
+        //
         98: iconst_4
+        //
         99: if_icmpne     116
+        //
        102: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       //
        105: iload_1
+       //
        106: iload_2
+       //
        107: invokestatic  #8                  // Method remainder:(II)I
+       //
        110: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+       //
        113: goto          127
+       //
        116: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       //
        119: iload         4
+       //
        121: invokestatic  #9                  // Method negate:(I)I
+       //
        124: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+       //
        127: iinc          4, 1
+       //
        130: goto          11
+       //
        133: return
+      //方法行号信息
       LineNumberTable:
         line 11: 0
         line 12: 3
@@ -165,6 +240,7 @@ Constant pool:
         line 26: 116
         line 14: 127
         line 29: 133
+      //局部变量表信息
       LocalVariableTable:
         Start  Length  Slot  Name   Signature
            11     122     4     i   I
@@ -172,6 +248,7 @@ Constant pool:
             3     131     1     a   I
             5     129     2     b   I
             8     126     3 count   I
+      //栈图
       StackMapTable: number_of_entries = 8
         frame_type = 255 /* full_frame */
           offset_delta = 11
