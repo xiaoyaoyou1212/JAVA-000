@@ -68,7 +68,7 @@ Constant pool:
   #58 = Utf8               (I)V
 {
   public Hello();
-    //构造方法
+    //描述：无参，没有返回值
     descriptor: ()V
     //公共方法
     flags: ACC_PUBLIC
@@ -84,7 +84,7 @@ Constant pool:
       //方法行号信息
       LineNumberTable:
         line 9: 0
-      //局部变量表信息
+      //局部变量表信息：0号槽位存放Hello对象的this指针
       LocalVariableTable:
         Start  Length  Slot  Name   Signature
             0       5     0  this   LHello;
@@ -97,129 +97,129 @@ Constant pool:
     Code:
       //栈深度3，本地变量5个槽位，方法参数1个
       stack=3, locals=5, args_size=1
-         //将单字节的常量值10推送至栈顶
+         //将常量10推送至栈顶
          0: bipush        10
-         //将栈顶int型数值存入第二个本地变量
+         //将栈顶常量10赋值给1号槽位本地变量a
          2: istore_1
-         //将int型5推送至栈顶
+         //将常量5推送至栈顶
          3: iconst_5
-         //将栈顶int型数值存入第三个本地变量
+         //将栈顶常量5赋值给2号槽位本地变量b
          4: istore_2
-         //将单字节的常量值6推送至栈顶
+         //将常量6推送至栈顶
          5: bipush        6
-         //将栈顶int型数值存入第四个本地变量
+         //将栈顶常量6赋值给3号槽位本地变量count
          7: istore_3
-         //将int型0推送至栈顶
+         //将常量0推送至栈顶
          8: iconst_0
-         //
+         //将栈顶常量0赋值给4号槽位本地变量i
          9: istore        4
-         //
+         //将本地变量i推送至栈顶
         11: iload         4
-        //
+        //将本地变量count推送至栈顶
         13: iload_3
-        //
+        //比较i和count大小，如果 i < count 进行下一步，如果 i >= count，直接return
         14: if_icmpge     133
-        //
+        //将本地变量i推送至栈顶
         17: iload         4
-        //
+        //如果 i == 0 进行下一步，如果 i != 0 时跳转到下一个条件判定
         19: ifne          36
-        //
+        //满足条件，获取System类的静态域，并将其值压入栈顶
         22: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
-        //
+        //将本地变量a推送至栈顶
         25: iload_1
-        //
+        //将本地变量b推送至栈顶
         26: iload_2
-        //
+        //调用静态方法add
         27: invokestatic  #3                  // Method add:(II)I
-        //
+        //调用实例方法println进行打印
         30: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
-        //
+        //跳转，进行 i++
         33: goto          127
-        //
+        //将本地变量i推送至栈顶，当前 i = 1
         36: iload         4
-        //
+        //将常量1推送至栈顶
         38: iconst_1
-        //
+        //如果 i == 1 进行下一步，如果 i != 1 时跳转到下一个条件判定
         39: if_icmpne     56
-        //
+        //满足条件，获取System类的静态域，并将其值压入栈顶
         42: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
-        //
+        //将本地变量a推送至栈顶
         45: iload_1
-        //
+        //将本地变量b推送至栈顶
         46: iload_2
-        //
+        //调用静态方法subtract
         47: invokestatic  #5                  // Method subtract:(II)I
-        //
+        //调用实例方法println进行打印
         50: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
-        //
+        //跳转，进行 i++
         53: goto          127
-        //
+        //将本地变量i推送至栈顶，当前 i = 2
         56: iload         4
-        //
+        //将常量2推送至栈顶
         58: iconst_2
-        //
+        //如果 i == 2 进行下一步，如果 i != 2 时跳转到下一个条件判定
         59: if_icmpne     76
-        //
+        //满足条件，获取System类的静态域，并将其值压入栈顶
         62: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
-        //
+        //将本地变量a推送至栈顶
         65: iload_1
-        //
+        //将本地变量b推送至栈顶
         66: iload_2
-        //
+        //调用静态方法multiply
         67: invokestatic  #6                  // Method multiply:(II)I
-        //
+        //调用实例方法println进行打印
         70: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
-        //
+        //跳转，进行 i++
         73: goto          127
-        //
+        //将本地变量i推送至栈顶，当前 i = 3
         76: iload         4
-        //
+        //将常量3推送至栈顶
         78: iconst_3
-        //
+        //如果 i == 3 进行下一步，如果 i != 3 时跳转到下一个条件判定
         79: if_icmpne     96
-        //
+        //满足条件，获取System类的静态域，并将其值压入栈顶
         82: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
-        //
+        //将本地变量a推送至栈顶
         85: iload_1
-        //
+        //将本地变量b推送至栈顶
         86: iload_2
-        //
+        //调用静态方法divide
         87: invokestatic  #7                  // Method divide:(II)I
-        //
+        //调用实例方法println进行打印
         90: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
-        //
+        //跳转，进行 i++
         93: goto          127
-        //
+        //将本地变量i推送至栈顶，当前 i = 4
         96: iload         4
-        //
+        //将常量4推送至栈顶
         98: iconst_4
-        //
+        //如果 i == 4 进行下一步，如果 i != 4 时跳转到下一个条件判定
         99: if_icmpne     116
-        //
+        //满足条件，获取System类的静态域，并将其值压入栈顶
        102: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
-       //
+       //将本地变量a推送至栈顶
        105: iload_1
-       //
+       //将本地变量b推送至栈顶
        106: iload_2
-       //
+       //调用静态方法remainder
        107: invokestatic  #8                  // Method remainder:(II)I
-       //
+       //调用实例方法println进行打印
        110: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
-       //
+       //跳转，进行 i++
        113: goto          127
-       //
+       //获取指定类的静态域，并将其值压入栈顶
        116: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
-       //
+       //将本地变量i推送至栈顶，当前 i = 5
        119: iload         4
-       //
+       //调用静态方法negate
        121: invokestatic  #9                  // Method negate:(I)I
-       //
+       //调用实例方法println进行打印
        124: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
-       //
+       //将4号槽位的变量进行加1运算，也就是i++
        127: iinc          4, 1
-       //
+       //跳转
        130: goto          11
-       //
+       //从当前方法返回void
        133: return
       //方法行号信息
       LineNumberTable:
@@ -240,7 +240,7 @@ Constant pool:
         line 26: 116
         line 14: 127
         line 29: 133
-      //局部变量表信息
+      //局部变量表信息：0号槽位存放main方法的args参数，1号槽位存放常量a，2号槽位存放常量b，3号槽位存放常量count，4号槽位存放常量i
       LocalVariableTable:
         Start  Length  Slot  Name   Signature
            11     122     4     i   I
