@@ -9,4 +9,12 @@ package com.huwei.week02.nio;
  * Copyright (C), 2015-2020
  */
 public class NettyServerApplication {
+    public static void main(String[] args) {
+        HttpServer server = new HttpServer(false,8801);
+        try {
+            server.run();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }
