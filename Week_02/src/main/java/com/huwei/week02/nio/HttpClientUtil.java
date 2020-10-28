@@ -1,20 +1,27 @@
 package com.huwei.week02.nio;
 
 import org.apache.http.HttpStatus;
-import org.apache.http.client.config.RequestConfig;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
- * @Description: TODO
+ * @Description: HttpClient请求
  * @Author: <a href="http://www.huwei.tech">dawi</a>
  * E-mail:xiaoyaoyou1212@foxmail.com
  * GitHub:https://github.com/xiaoyaoyou1212
@@ -22,60 +29,119 @@ import java.io.IOException;
  * Copyright (C), 2015-2020
  */
 public class HttpClientUtil {
-    private static Logger logger = LoggerFactory.getLogger(HttpClientUtil.class);
-
-    private static RequestConfig requestConfig = null;
-
-    static {
-        // 设置请求和传输超时时间
-        requestConfig = RequestConfig.custom().setSocketTimeout(2000).setConnectTimeout(2000).build();
-    }
 
     public static void main(String[] args) {
-        String result = httpPost("http://localhost:8801/hello", null);
+        String result = doGet("http://localhost:8801/hello");
         System.out.println(result);
     }
 
-    /**
-     * post请求传输json参数
-     *
-     * @param url       url地址
-     * @param param
-     * @return
-     */
-    public static String httpPost(String url, String param) {
-        // post请求返回结果
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        String result = null;
-        HttpPost httpPost = new HttpPost(url);
-        // 设置请求和传输超时时间
-        httpPost.setConfig(requestConfig);
+    public static String doGet(String url) {
+        return doGet(url, null);
+    }
+
+    public static String doPost(String url) {
+        return doPost(url, null);
+    }
+
+    public static String doGet(String url, Map<String, String> param) {
+        // 创建Httpclient对象
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        String resultString = "";
+        CloseableHttpResponse response = null;
         try {
-            if (null != param) {
-                // 解决中文乱码问题
-                StringEntity entity = new StringEntity(param, "utf-8");
-                entity.setContentEncoding("UTF-8");
-                entity.setContentType("application/json");
-                httpPost.setEntity(entity);
-            }
-            CloseableHttpResponse closeableHttpResponse = httpClient.execute(httpPost);
-            // 请求发送成功，并得到响应
-            if (closeableHttpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                String str = "";
-                try {
-                    // 读取服务器返回过来的json字符串数据
-                    str = EntityUtils.toString(closeableHttpResponse.getEntity(), "utf-8");
-                    return str;
-                } catch (Exception e) {
-                    e.printStackTrace();
+            // 创建uri
+            URIBuilder builder = new URIBuilder(url);
+            if (param != null) {
+                for (String key : param.keySet()) {
+                    builder.addParameter(key, param.get(key));
                 }
             }
-        } catch (IOException e) {
+            URI uri = builder.build();
+            // 创建http GET请求
+            HttpGet httpGet = new HttpGet(uri);
+            // 执行请求
+            response = httpclient.execute(httpGet);
+            // 判断返回状态是否为200
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                resultString = EntityUtils.toString(response.getEntity(), "UTF-8");
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            httpPost.releaseConnection();
+            try {
+                if (response != null) {
+                    response.close();
+                }
+                httpclient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        return result;
+        return resultString;
+    }
+
+    public static String doPost(String url, Map<String, String> param) {
+        // 创建Httpclient对象
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        CloseableHttpResponse response = null;
+        String resultString = "";
+        try {
+            // 创建Http Post请求
+            HttpPost httpPost = new HttpPost(url);
+            // 创建参数列表
+            if (param != null) {
+                List<NameValuePair> paramList = new ArrayList<>();
+                for (String key : param.keySet()) {
+                    paramList.add(new BasicNameValuePair(key, param.get(key)));
+                }
+                // 模拟表单
+                UrlEncodedFormEntity entity = new UrlEncodedFormEntity(paramList);
+                httpPost.setEntity(entity);
+            }
+            // 执行http请求
+            response = httpClient.execute(httpPost);
+            resultString = EntityUtils.toString(response.getEntity(), "utf-8");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                response.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return resultString;
+    }
+
+    public static String doPostJson(String url, String json) {
+        // 创建Httpclient对象
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        CloseableHttpResponse response = null;
+        String resultString = "";
+        try {
+            // 创建Http Post请求
+            HttpPost httpPost = new HttpPost(url);
+            // 创建请求内容
+            StringEntity entity = new StringEntity(json, ContentType.APPLICATION_JSON);
+            httpPost.setEntity(entity);
+            // 执行http请求
+            response = httpClient.execute(httpPost);
+            if (response != null) {
+                resultString = EntityUtils.toString(response.getEntity(), "utf-8");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (response != null) {
+                    response.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return resultString;
     }
 
 }

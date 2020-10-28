@@ -8,11 +8,10 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.ssl.SslContext;
 
 /**
- * @Description: TODO
+ * @Description: 服务初始化
  * @Author: <a href="http://www.huwei.tech">dawi</a>
  * E-mail:xiaoyaoyou1212@foxmail.com
  * GitHub:https://github.com/xiaoyaoyou1212
- * @Date: 2020-10-27 21:24
  * @FileName: HttpInitializer
  * Copyright (C), 2015-2020
  */

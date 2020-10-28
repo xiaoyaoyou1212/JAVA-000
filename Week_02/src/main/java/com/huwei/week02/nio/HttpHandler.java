@@ -20,11 +20,10 @@ import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
 /**
- * @Description: TODO
+ * @Description: 服务处理
  * @Author: <a href="http://www.huwei.tech">dawi</a>
  * E-mail:xiaoyaoyou1212@foxmail.com
  * GitHub:https://github.com/xiaoyaoyou1212
- * @Date: 2020-10-27 21:25
  * @FileName: HttpHandler
  * Copyright (C), 2015-2020
  */
@@ -60,7 +59,7 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
 
         try {
 
-            String value = "Hello World!";
+            String value = "Hello World! by 逍遥游";
             response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(value.getBytes("UTF-8")));
             response.headers().set("Content-Type", "application/json");
             response.headers().setInt("Content-Length", response.content().readableBytes());

@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.LongAdder;
 
 /**
- * @Description: TODO
+ * @Description: GC日志分析
  * @Author: <a href="http://www.huwei.tech">dawi</a>
  * E-mail:xiaoyaoyou1212@foxmail.com
  * GitHub:https://github.com/xiaoyaoyou1212
