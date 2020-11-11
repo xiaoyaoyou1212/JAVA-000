@@ -10,10 +10,10 @@ package com.huwei.week04;
  * Copyright (C), 2015-2020
  */
 public class Fibo {
-    private int value;
+    private Integer value = null;
 
     public int getValue() {
-        while (value == 0) {
+        while (value == null) {
 
         }
         return value;

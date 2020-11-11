@@ -24,21 +24,25 @@ public class CyclicBarrierHandler {
 
         Fibo fibo = new Fibo();
         ExecutorService exec = Executors.newSingleThreadExecutor();
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(1);
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(1, new Runnable() {
+            @Override
+            public void run() {
+                int result = fibo.getValue(); //这是得到的返回值
+
+                // 确保  拿到result 并输出
+                System.out.println("异步计算结果为："+result);
+
+                System.out.println("使用时间："+ (System.currentTimeMillis()-start) + " ms");
+            }
+        });
         exec.execute(() -> {
             try {
                 fibo.sum(36);
+                cyclicBarrier.await();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
-        cyclicBarrier.await();
-        int result = fibo.getValue(); //这是得到的返回值
-
-        // 确保  拿到result 并输出
-        System.out.println("异步计算结果为："+result);
-
-        System.out.println("使用时间："+ (System.currentTimeMillis()-start) + " ms");
 
         // 然后退出main线程
         exec.shutdown();
