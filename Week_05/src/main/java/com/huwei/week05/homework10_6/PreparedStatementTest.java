@@ -1,6 +1,9 @@
 package com.huwei.week05.homework10_6;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * @Description: 使用 PreparedStatement 操作
@@ -21,23 +24,24 @@ public class PreparedStatementTest {
         //查询
         sql = "SELECT * FROM tb_student WHERE id = ?";
         preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setObject(1, 1);
+        preparedStatement.setObject(1, 2);
         query(preparedStatement, resultSet);
         //增加
         sql = "INSERT INTO tb_student VALUES(?, ?)";
         preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setObject(1, null);
         preparedStatement.setObject(2, "逍遥游");
         System.out.println("插入执行结果:" + update(preparedStatement));
         //更新
         sql = "UPDATE tb_student SET name = ? WHERE id = ?";
         preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setObject(1, 2);
-        preparedStatement.setObject(2, "胡伟");
+        preparedStatement.setObject(1, "胡伟");
+        preparedStatement.setObject(2, 2);
         System.out.println("更新执行结果:" + update(preparedStatement));
         //删除
         sql = "DELETE FROM tb_student WHERE id = ?";
         preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setObject(1, 1);
+        preparedStatement.setObject(1, 4);
         System.out.println("删除执行结果:" + update(preparedStatement));
         JdbcUtils.close(connection, preparedStatement, resultSet);
     }

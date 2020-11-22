@@ -1,28 +1,24 @@
-package com.huwei.week05.homework10_6.hikari;
+package com.huwei.week05.homework10_3;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
- * @Description: MODE
+ * @Description: TODO
  * @Author: <a href="http://www.huwei.tech">dawi</a>
  * E-mail:xiaoyaoyou1212@foxmail.com
  * GitHub:https://github.com/xiaoyaoyou1212
- * @Date: 2020/11/21 16:16
+ * @Date: 2020-11-22 20:50
  * @FileName: Student
  * Copyright (C), 2015-2020
  */
-@Entity
-@Table(name = "tb_student")
 public class Student implements Serializable {
-    @Id
-    @Column(name = "id")
     private Integer id;
-    @Column(name = "name")
     private String name;
+
+    public Student(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;
@@ -38,13 +34,5 @@ public class Student implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
     }
 }

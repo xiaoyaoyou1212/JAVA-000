@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.huwei.week05.homework10_3.CustomAutoConfiguration
