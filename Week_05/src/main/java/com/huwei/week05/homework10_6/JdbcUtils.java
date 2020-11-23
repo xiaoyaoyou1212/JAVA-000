@@ -13,7 +13,7 @@ import java.sql.*;
  */
 public class JdbcUtils {
     private static final String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://106.53.1.238:3306/test?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true";
+    private static final String URL = "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true";
     private static final String USER = "test";
     private static final String PASSWORD = "123456";
 
