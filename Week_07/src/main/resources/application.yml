@@ -1,0 +1,45 @@
+server:
+  port: 10000
+spring:
+  application:
+    name: Week_07
+  main:
+    allow-bean-definition-overriding: true
+  shardingsphere:
+    props:
+      # 显示具体sql查询情况
+      sql-show: true
+    datasource:
+      names: master-ds,slave-ds
+      # 通用配置
+      common:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: test
+        password: 123456
+      # 主库数据源
+      master-ds:
+        jdbc-url: jdbc:mysql://localhost:3306/db0?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+      # 从库数据源
+      slave-ds:
+        jdbc-url: jdbc:mysql://localhost:3316/db1?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    rules:
+      # 读写分离配置
+      replica-query:
+        dataSources:
+          # 逻辑数据源
+          pr_ds:
+            # 指定主库
+            primary-data-source-name: master-ds
+            # 指定从库
+            replica-data-source-names: slave-ds
+            # 负载均衡策略，名字为自定义，若不填，在 Spring 2.x 下会报空指针异常
+            load-balancer-name: round-robin
+        load-balancers:
+          # 负载均衡策略名
+          round-robin:
+            # 轮询策略
+            type: ROUND_ROBIN
+            # 无需设置，但为避免空指针异常，进行了任意设置
+            props:
+              workid: 123
