@@ -1,5 +1,5 @@
 server:
-  port: 10000
+  port: 18010
 spring:
   application:
     name: Week_07
