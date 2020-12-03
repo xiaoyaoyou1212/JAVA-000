@@ -16,10 +16,10 @@ import javax.annotation.Resource;
  * @FileName: TestController
  * Copyright (C), 2015-2020
  */
-@RestController
-@RequestMapping("/test")
+@RestController("shardingsphereTestController")
+@RequestMapping("/shardingsphere/test")
 public class TestController {
-    @Resource
+    @Resource(name = "shardingsphereTestServiceImpl")
     private TestService testService;
 
     @GetMapping("/getTest0")

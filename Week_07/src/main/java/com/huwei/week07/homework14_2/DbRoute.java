@@ -14,6 +14,9 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 public class DbRoute extends AbstractRoutingDataSource {
     @Override
     protected Object determineCurrentLookupKey() {
+        if (DbContext.getDb() == null) {
+            return DbType.DB_TYPE_MASTER;
+        }
         return DbContext.getDb().orElse(DbType.DB_TYPE_MASTER);
     }
 }

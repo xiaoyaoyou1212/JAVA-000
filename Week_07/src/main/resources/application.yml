@@ -19,10 +19,10 @@ spring:
         password: 123456
       # 主库数据源
       master-ds:
-        jdbc-url: jdbc:mysql://localhost:3306/db0?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+        jdbc-url: jdbc:mysql://localhost:3306/db0?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
       # 从库数据源
       slave-ds:
-        jdbc-url: jdbc:mysql://localhost:3316/db1?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+        jdbc-url: jdbc:mysql://localhost:3316/db1?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
     rules:
       # 读写分离配置
       replica-query:
@@ -42,4 +42,4 @@ spring:
             type: ROUND_ROBIN
             # 无需设置，但为避免空指针异常，进行了任意设置
             props:
-              workid: 123
+              workid: test

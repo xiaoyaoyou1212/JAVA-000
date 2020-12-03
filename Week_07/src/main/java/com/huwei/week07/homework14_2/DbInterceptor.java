@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 public class DbInterceptor {
-    private final String pointcut = "execution(*com.huwei.week07.homework14_2.service..*.*(..))";
+    private final String pointcut = "execution(* com.huwei.week07.homework14_2.service..*.*(..))";
 
     @Pointcut(value = pointcut)
     public void dbType() {

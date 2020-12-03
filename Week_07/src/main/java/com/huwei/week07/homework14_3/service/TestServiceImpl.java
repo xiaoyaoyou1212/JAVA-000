@@ -1,6 +1,6 @@
 package com.huwei.week07.homework14_3.service;
 
-import com.huwei.week07.homework14_3.dao.TestDao;
+import com.huwei.week07.homework14_3.dao.STestDao;
 import com.huwei.week07.homework14_3.mode.Test;
 import org.springframework.stereotype.Service;
 
@@ -15,26 +15,26 @@ import javax.annotation.Resource;
  * @FileName: TestServiceImpl
  * Copyright (C), 2015-2020
  */
-@Service
+@Service("shardingsphereTestServiceImpl")
 public class TestServiceImpl implements TestService {
     @Resource
-    private TestDao testDao;
+    private STestDao sTestDao;
 
     @Override
     public Test getTest0(Integer id) {
-        Test test = testDao.getTest(id);
+        Test test = sTestDao.getTest(id);
         return test;
     }
 
     @Override
     public Test getTest1(Integer id) {
-        Test test = testDao.getTest(id);
+        Test test = sTestDao.getTest(id);
         return test;
     }
 
     @Override
     public Test getTest2(Integer id) {
-        Test test = testDao.getTest(id);
+        Test test = sTestDao.getTest(id);
         return test;
     }
 }
