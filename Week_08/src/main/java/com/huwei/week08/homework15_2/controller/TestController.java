@@ -22,10 +22,10 @@ public class TestController {
     private TestService testService;
 
     @PostMapping("/add")
-    public Object add(String title, String desc) {
+    public Object add(String title, String name) {
         Test test = new Test();
         test.setTitle(title);
-        test.setDesc(desc);
+        test.setName(name);
         return testService.insert(test);
     }
 
@@ -35,11 +35,11 @@ public class TestController {
     }
 
     @PostMapping("/update")
-    public Object update(Integer id, String title, String desc) {
+    public Object update(Integer id, String title, String name) {
         Test test = testService.selectByPrimaryKey(id);
         if (test != null) {
             test.setTitle(title);
-            test.setDesc(desc);
+            test.setName(name);
         }
         return testService.updateByPrimaryKey(test);
     }

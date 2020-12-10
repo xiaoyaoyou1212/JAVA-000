@@ -1,5 +1,6 @@
 package com.huwei.week08.homework15_2.mode;
 
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,9 +16,12 @@ import javax.persistence.Table;
 @Table(name = "tb_test")
 public class Test {
     @Id
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "title")
     private String title;
-    private String desc;
+    @Column(name = "name")
+    private String name;
 
     public Integer getId() {
         return id;
@@ -35,12 +39,12 @@ public class Test {
         this.title = title;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getName() {
+        return name;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -48,7 +52,7 @@ public class Test {
         return "Test{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", desc='" + desc + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
